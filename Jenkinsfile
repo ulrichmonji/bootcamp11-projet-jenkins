@@ -1,4 +1,4 @@
-/* import shared librarys */
+/* import shared library */
 @Library('chocoapp-slack-share-library')_
 
 pipeline {
@@ -10,11 +10,11 @@ pipeline {
         PRODUCTION = "chocoapp-prod"
         DOCKERHUB_ID = "choco1992"
         DOCKERHUB_PASSWORD = credentials('dockerhub_password')
-        APP_NAME = "ulrich"
-        STG_API_ENDPOINT = "http://ip10-0-3-3-cfugvb7ielrgqhpdu170-1993.direct.docker.labs.eazytraining.fr/"
-        STG_APP_ENDPOINT = "http://ip10-0-3-3-cfugvb7ielrgqhpdu170-8080.direct.docker.labs.eazytraining.fr/"
-        PROD_API_ENDPOINT = "http://ip10-0-3-3-cfugvb7ielrgqhpdu170-1993.direct.docker.labs.eazytraining.fr/"
-        PROD_APP_ENDPOINT = "http://ip10-0-3-3-cfugvb7ielrgqhpdu170-80.direct.docker.labs.eazytraining.fr/"
+        APP_NAME = "baba"
+        STG_API_ENDPOINT = "ip10-0-3-3-cfugvb7ielrgqhpdu170-1993.direct.docker.labs.eazytraining.fr"
+        STG_APP_ENDPOINT = "ip10-0-3-3-cfugvb7ielrgqhpdu170-8080.direct.docker.labs.eazytraining.fr"
+        PROD_API_ENDPOINT = "ip10-0-3-3-cfugvb7ielrgqhpdu170-1993.direct.docker.labs.eazytraining.fr"
+        PROD_APP_ENDPOINT = "ip10-0-3-3-cfugvb7ielrgqhpdu170-80.direct.docker.labs.eazytraining.fr"
         INTERNAL_PORT = "80"
         EXTERNAL_PORT = "${PORT_EXPOSED}"
         CONTAINER_IMAGE = "${DOCKERHUB_ID}/${IMAGE_NAME}:${IMAGE_TAG}"
@@ -47,7 +47,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                   curl -v 172.17.0.1:$APP_EXPOSED_PORT | grep -i "Dimension"
+                   curl -v localhost:$APP_EXPOSED_PORT | grep -i "Dimension"
                 '''
               }
            }
